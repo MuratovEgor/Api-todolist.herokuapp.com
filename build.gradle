@@ -16,7 +16,8 @@ def allureVersion = "2.14.0",
     assertjVersion = "3.19.0",
     aspectjweaverVersion = "1.9.7",
     ownerVersion = "1.0.12",
-    jacksonVersion = "2.11.2";
+    jacksonVersion = "2.11.2",
+    javafakerVersion = "1.0.2";
 
 allure {
     version = allureVersion
@@ -39,6 +40,7 @@ dependencies {
             "org.assertj:assertj-core:$assertjVersion",
             "org.aeonbits.owner:owner:$ownerVersion",
             "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion",
+            "com.github.javafaker:javafaker:$javafakerVersion"
     )
     testRuntimeOnly(
             "org.slf4j:slf4j-simple:1.7.29",
