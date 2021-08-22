@@ -1,9 +1,10 @@
 package com.herokuapp.todolist.helpers;
 
 import com.codeborne.selenide.Configuration;
+import com.herokuapp.todolist.config.Project;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import ru.aviasales.config.Project;
+
 
 import java.util.HashMap;
 import java.util.Map;
