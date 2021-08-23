@@ -41,7 +41,7 @@ gradle clean test -Dbrowser=chrome -DbrowserVersion=91.0 -DbrowserSize=1920x1080
 allure serve build/allure-results
 ```
 
-## Notification of test results via a bot on Telegram <a href="https://telegram.org/"> <img src="images/telegram.svg" width="40" height="40"></a>
+## Notification of test results via a bot on Telegram <a href="https://telegram.org/"> <img src="images/Telegram.svg" width="40" height="40"></a>
 
 ![alt "tellegram bot"](./images/bot.png "telegram bot")
 
