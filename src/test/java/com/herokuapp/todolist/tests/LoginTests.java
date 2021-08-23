@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Layer("Api")
 @Owner("egormuratov")
-public class LoginTests {
+public class LoginTests{
 
     LoginMocks loginMocks = new LoginMocks();
 
@@ -105,10 +105,10 @@ public class LoginTests {
             logoutResponse[0] = Specs.userRequestSpec
                     .given()
                     .when()
-                    .headers("Authorization", loginResponse[0].extract().body().path("token").toString())
+                    .headers("Authorization",
+                            loginResponse[0].extract().body().path("token").toString())
                     .post("/logout")
                     .then()
-                    .log().body()
                     .statusCode(200);
         });
 
@@ -126,7 +126,8 @@ public class LoginTests {
     @DisplayName("The password cannot be shorter than the minimum length allowed (7)")
     void unSuccessfulRegistrationShortPass() {
         final String[] response = new String[1];
-        step("Sent POST request with new user with short password:" + loginMocks.newUserWithShortPassword(), () -> {
+        step("Sent POST request with new user with short password:"
+                + loginMocks.newUserWithShortPassword(), () -> {
             response[0] =
                     Specs.userRequestSpec
                             .given()
