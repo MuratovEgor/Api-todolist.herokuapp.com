@@ -7,10 +7,15 @@ import com.herokuapp.todolist.mocks.LoginMocks;
 import com.herokuapp.todolist.specs.Specs;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.*;
+import io.restassured.response.ValidatableResponse;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
+import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
 import static io.restassured.http.ContentType.JSON;
+import static org.hamcrest.core.Is.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Layer("Api")
@@ -44,6 +49,38 @@ public class LoginTests {
     }
 
     @Test
+    @Story("Login")
+    @JiraIssues({@JiraIssue("EM-203")})
+    @Tags({@Tag("api"), @Tag("regress")})
+    @DisplayName("Successful Login")
+    void successfulLogin() {
+        final ValidatableResponse[] response1 = new ValidatableResponse[1];
+        step("Send a POST request to log in as user:" + loginMocks.testUser(), () -> {
+            response1[0] = Specs.userRequestSpec
+                    .given()
+                    .contentType(JSON)
+                    .body(loginMocks.testUser())
+                    .when()
+                    .post("/login")
+                    .then()
+                    .statusCode(200);
+        });
+
+        step("Check user id" + loginMocks.testUserId(), () -> {
+            response1[0].body("user._id", is(loginMocks.testUserId()));
+        });
+
+        step("Check user email" + loginMocks.testUserEmail(), () -> {
+            response1[0].body("user.email", is(loginMocks.testUserEmail()));
+        });
+
+        step("Check user name" + loginMocks.testUserName(), () -> {
+            response1[0].body("user.name", is(loginMocks.testUserName()));
+        });
+
+    }
+
+    @Test
     @Story("Registration")
     @JiraIssues({@JiraIssue("EM-201")})
     @Tags({@Tag("api"), @Tag("regress")})
@@ -65,32 +102,5 @@ public class LoginTests {
         step("Check that the message \"Password is shorter than the minimum allowed length\" has been returned.", () -> {
             assertEquals("\"User validation failed: password: Path `password` (`42`) is shorter than the minimum allowed length (7).\"", response[0]);
         });
-    }
-
-    @Test
-    @Story("Registration")
-    @JiraIssues({@JiraIssue("EM-202")})
-    @Tags({@Tag("api"), @Tag("regress")})
-    @DisplayName("Successful registration")
-    @Disabled("Not finished")
-    void successfulRegistration() {
-        final String[] response = new String[1];
-        step("Sent POST request with new user:" + loginMocks.newUser(), () -> {
-            response[0] =
-                    Specs.userRequestSpec
-                            .given()
-                            .contentType(JSON)
-                            .body(loginMocks.newUser())
-                            .log().body()
-                            .when()
-                            .post("/register")
-                            .then()
-                            .statusCode(400)
-                            .log().body().extract().response().asString();
-        });
-
-//        step("Check that the message \"Password is shorter than the minimum allowed length\" has been returned.", () -> {
-//            assertEquals("\"User validation failed: password: Path `password` (`42`) is shorter than the minimum allowed length (7).\"", response[0]);
-//        });
     }
 }
