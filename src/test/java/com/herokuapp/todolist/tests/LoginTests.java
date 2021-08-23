@@ -81,6 +81,45 @@ public class LoginTests {
     }
 
     @Test
+    @Story("Login")
+    @JiraIssues({@JiraIssue("EM-203")})
+    @Tags({@Tag("api"), @Tag("regress")})
+    @DisplayName("Successful Logout")
+    void successfulLogout() {
+
+        final ValidatableResponse[] loginResponse = new ValidatableResponse[1];
+        final ValidatableResponse[] logoutResponse = new ValidatableResponse[1];
+        step("Send a POST request to log in as user:" + loginMocks.testUser(), () -> {
+            loginResponse[0] = Specs.userRequestSpec
+                    .given()
+                    .contentType(JSON)
+                    .body(loginMocks.testUser())
+                    .when()
+                    .post("/login")
+                    .then()
+                    .statusCode(200);
+        });
+
+
+        step("Send a POST request to logout", () -> {
+            logoutResponse[0] = Specs.userRequestSpec
+                    .given()
+                    .when()
+                    .headers("Authorization", loginResponse[0].extract().body().path("token").toString())
+                    .post("/logout")
+                    .then()
+                    .log().body()
+                    .statusCode(200);
+        });
+
+        step("Check body have an object: {'success': true}", () -> {
+            logoutResponse[0].body("success", is(true));
+        });
+
+
+    }
+
+    @Test
     @Story("Registration")
     @JiraIssues({@JiraIssue("EM-201")})
     @Tags({@Tag("api"), @Tag("regress")})
