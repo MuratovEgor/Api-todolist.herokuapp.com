@@ -45,25 +45,22 @@ public class TaskTests {
                     .then()
                     .statusCode(201);
         });
-
-        step("Check response status", () -> {
-            assertThat(response[0].body("success", is(true)));
-        });
-
-        step("Check completed status", () -> {
-            assertThat(response[0].body("data.completed", is(false)));
-        });
-
-        step("Check the task description", () -> {
-            assertThat(response[0].body("data.description", is("reading book")));
-        });
-
+        step("Check response status", () ->
+            assertThat(response[0].body("success", is(true)))
+        );
+        step("Check completed status", () ->
+            assertThat(response[0].body("data.completed", is(false)))
+        );
+        step("Check the task description", () ->
+            assertThat(response[0].body("data.description", is("reading book")))
+        );
     }
 
     @Test
     void DeleteTaskById() {
-
         final String[] taskId = new String[1];
+        final ValidatableResponse[] response = new ValidatableResponse[1];
+
         step("Send a POST request to add a new task with the request body: { \"description\": \"reading book\" }", () -> {
             taskId[0] = Specs.taskRequestSpec
                     .given()
@@ -76,24 +73,18 @@ public class TaskTests {
                     .then()
                     .statusCode(201).extract().body().path("data._id").toString();
         });
-
-
-        final ValidatableResponse[] response = new ValidatableResponse[1];
         step("Send a DELETE request to delete the task with id:" + taskId[0], () -> {
             response[0] = Specs.taskRequestSpec
                     .given()
                     .headers("Authorization",
                             loginResponse[0].extract().body().path("token").toString())
                     .when()
-                    .log().body()
                     .delete("/" + taskId[0])
                     .then()
-                    .log().body()
                     .statusCode(200);
         });
-
-        step("Check response status", () -> {
-            assertThat(response[0].body("success", is(true)));
-        });
+        step("Check response status", () ->
+            assertThat(response[0].body("success", is(true)))
+        );
     }
 }

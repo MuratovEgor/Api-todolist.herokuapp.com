@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Layer("Api")
 @Owner("egormuratov")
-public class LoginTests{
+public class LoginTests {
 
     LoginMocks loginMocks = new LoginMocks();
 
@@ -31,6 +31,7 @@ public class LoginTests{
     @DisplayName("Show 'Unable to login' message if user is not found")
     void unSuccessfulLoginUserNotFound() {
         final String[] response = new String[1];
+
         step("Sent POST request with unregistered user:" + loginMocks.unregisteredUser(), () -> {
             response[0] =
                     Specs.userRequestSpec
@@ -42,10 +43,9 @@ public class LoginTests{
                             .then()
                             .statusCode(400).extract().response().asString();
         });
-
-        step("Check that the message \"Unable to log in\" has been returned.", () -> {
-            assertEquals("\"Unable to login\"", response[0]);
-        });
+        step("Check that the message \"Unable to log in\" has been returned.", () ->
+            assertEquals("\"Unable to login\"", response[0])
+        );
     }
 
     @Test
@@ -55,6 +55,7 @@ public class LoginTests{
     @DisplayName("Successful Login")
     void successfulLogin() {
         final ValidatableResponse[] response1 = new ValidatableResponse[1];
+
         step("Send a POST request to log in as user:" + loginMocks.testUser(), () -> {
             response1[0] = Specs.userRequestSpec
                     .given()
@@ -65,19 +66,15 @@ public class LoginTests{
                     .then()
                     .statusCode(200);
         });
-
         step("Check user id" + loginMocks.testUserId(), () -> {
             response1[0].body("user._id", is(loginMocks.testUserId()));
         });
-
         step("Check user email" + loginMocks.testUserEmail(), () -> {
             response1[0].body("user.email", is(loginMocks.testUserEmail()));
         });
-
         step("Check user name" + loginMocks.testUserName(), () -> {
             response1[0].body("user.name", is(loginMocks.testUserName()));
         });
-
     }
 
     @Test
@@ -86,9 +83,9 @@ public class LoginTests{
     @Tags({@Tag("api"), @Tag("regress")})
     @DisplayName("Successful Logout")
     void successfulLogout() {
-
         final ValidatableResponse[] loginResponse = new ValidatableResponse[1];
         final ValidatableResponse[] logoutResponse = new ValidatableResponse[1];
+
         step("Send a POST request to log in as user:" + loginMocks.testUser(), () -> {
             loginResponse[0] = Specs.userRequestSpec
                     .given()
@@ -99,8 +96,6 @@ public class LoginTests{
                     .then()
                     .statusCode(200);
         });
-
-
         step("Send a POST request to logout", () -> {
             logoutResponse[0] = Specs.userRequestSpec
                     .given()
@@ -111,12 +106,9 @@ public class LoginTests{
                     .then()
                     .statusCode(200);
         });
-
         step("Check body have an object: {'success': true}", () -> {
             logoutResponse[0].body("success", is(true));
         });
-
-
     }
 
     @Test
@@ -138,9 +130,8 @@ public class LoginTests{
                             .then()
                             .statusCode(400).extract().response().asString();
         });
-
-        step("Check that the message \"Password is shorter than the minimum allowed length\" has been returned.", () -> {
-            assertEquals("\"User validation failed: password: Path `password` (`42`) is shorter than the minimum allowed length (7).\"", response[0]);
-        });
+        step("Check that the message \"Password is shorter than the minimum allowed length\" has been returned.", () ->
+            assertEquals("\"User validation failed: password: Path `password` (`42`) is shorter than the minimum allowed length (7).\"", response[0])
+        );
     }
 }
