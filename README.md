@@ -4,9 +4,9 @@ ___
 
 ## Technologies used:
 
-| GitHub | IntelliJ IDEA | Java | Gradle | Junit5 |
+| Java | Gradle | Junit5 | IntelliJ IDEA | GitHub |
 |:------:|:----:|:----:|:------:|:------:|
-| <img src="images/GitHub.svg" width="40" height="40"> | <img src="images/IDEA.svg" width="40" height="40"> | <img src="images/JAVA.svg" width="40" height="40"> | <img src="images/Gradle.svg" width="40" height="40"> | <img src="images/Junit5.svg" width="40" height="40">
+| <img src="images/JAVA.svg" width="40" height="40"> | <img src="images/Gradle.svg" width="40" height="40"> | <img src="images/Junit5.svg" width="40" height="40"> | <img src="images/IDEA.svg" width="40" height="40"> |  <img src="images/GitHub.svg" width="40" height="40">
 
 | Jenkins  | Allure Report | Allure TestOps | Telegram |
 |:--------:|:-------------:|:---------:|:-------:|
