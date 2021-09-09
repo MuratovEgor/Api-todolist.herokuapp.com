@@ -26,7 +26,7 @@ public class LoginTests {
 
     @Test
     @Story("Login")
-    @JiraIssues({@JiraIssue("EM-200")})
+    @JiraIssues({@JiraIssue("HOM-233")})
     @Tags({@Tag("api"), @Tag("regress")})
     @DisplayName("Show 'Unable to login' message if user is not found")
     void unSuccessfulLoginUserNotFound() {
@@ -50,7 +50,7 @@ public class LoginTests {
 
     @Test
     @Story("Login")
-    @JiraIssues({@JiraIssue("EM-203")})
+    @JiraIssues({@JiraIssue("HOM-233")})
     @Tags({@Tag("api"), @Tag("regress")})
     @DisplayName("Successful Login")
     void successfulLogin() {
@@ -79,7 +79,7 @@ public class LoginTests {
 
     @Test
     @Story("Login")
-    @JiraIssues({@JiraIssue("EM-203")})
+    @JiraIssues({@JiraIssue("HOM-233")})
     @Tags({@Tag("api"), @Tag("regress")})
     @DisplayName("Successful Logout")
     void successfulLogout() {
@@ -113,7 +113,7 @@ public class LoginTests {
 
     @Test
     @Story("Registration")
-    @JiraIssues({@JiraIssue("EM-201")})
+    @JiraIssues({@JiraIssue("HOM-233")})
     @Tags({@Tag("api"), @Tag("regress")})
     @DisplayName("The password cannot be shorter than the minimum length allowed (7)")
     void unSuccessfulRegistrationShortPass() {

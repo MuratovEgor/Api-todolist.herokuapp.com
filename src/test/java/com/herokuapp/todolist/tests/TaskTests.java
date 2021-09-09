@@ -1,10 +1,12 @@
 package com.herokuapp.todolist.tests;
 
+import com.herokuapp.todolist.annotations.JiraIssue;
+import com.herokuapp.todolist.annotations.JiraIssues;
 import com.herokuapp.todolist.mocks.LoginMocks;
 import com.herokuapp.todolist.specs.Specs;
+import io.qameta.allure.Story;
 import io.restassured.response.ValidatableResponse;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static io.qameta.allure.Allure.step;
 import static io.restassured.http.ContentType.JSON;
@@ -30,6 +32,10 @@ public class TaskTests {
     }
 
     @Test
+    @Story("Add tasks")
+    @JiraIssues({@JiraIssue("HOM-233")})
+    @Tags({@Tag("api"), @Tag("regress"), @Tag("smoke")})
+    @DisplayName("Successful addition of a task")
     void AddTask() {
         final ValidatableResponse[] response = new ValidatableResponse[1];
 
@@ -57,6 +63,10 @@ public class TaskTests {
     }
 
     @Test
+    @Story("Delete tasks")
+    @JiraIssues({@JiraIssue("HOM-233")})
+    @Tags({@Tag("api"), @Tag("regress"), @Tag("smoke")})
+    @DisplayName("Successful deletion of a task")
     void DeleteTaskById() {
         final String[] taskId = new String[1];
         final ValidatableResponse[] response = new ValidatableResponse[1];
