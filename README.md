@@ -19,7 +19,6 @@ ___
 * REPOSITORY
 * BROWSER (default chrome)
 * BROWSER_VERSION (default 91.0)
-* BROWSER_SIZE (default 1920x1080)
 * REMOTE_DRIVER_URL (url address from selenoid or grid. default selenoid.autotests.cloud)
 * THREADS (number of threads to run. default 1)
 * ALLURE_NOTIFICATIONS_VERSION (default 3.0.2)
@@ -35,7 +34,7 @@ gradle clean test
 ### Run tests with not filled local.properties:
 
 ```bash
-gradle clean test -Dbrowser=chrome -DbrowserVersion=91.0 -DbrowserSize=1920x1080 -DremoteDriverUrl=https://user1:1234@selenoid.autotests.cloud/wd/hub/ -DvideoStorage=https://selenoid.autotests.cloud/video/ -Dthreads=1
+gradle clean test -Dbrowser=chrome -DbrowserVersion=91.0 -DremoteDriverUrl=https://user1:1234@selenoid.autotests.cloud/wd/hub/ -Dthreads=1
 ```
 
 ### Serve allure report:
