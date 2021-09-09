@@ -52,13 +52,13 @@ public class TaskTests {
                     .statusCode(201);
         });
         step("Check response status", () ->
-            assertThat(response[0].body("success", is(true)))
+                assertThat(response[0].body("success", is(true)))
         );
         step("Check completed status", () ->
-            assertThat(response[0].body("data.completed", is(false)))
+                assertThat(response[0].body("data.completed", is(false)))
         );
         step("Check the task description", () ->
-            assertThat(response[0].body("data.description", is("reading book")))
+                assertThat(response[0].body("data.description", is("reading book")))
         );
     }
 
@@ -94,7 +94,7 @@ public class TaskTests {
                     .statusCode(200);
         });
         step("Check response status", () ->
-            assertThat(response[0].body("success", is(true)))
+                assertThat(response[0].body("success", is(true)))
         );
     }
 }

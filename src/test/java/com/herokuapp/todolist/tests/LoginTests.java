@@ -44,7 +44,7 @@ public class LoginTests {
                             .statusCode(400).extract().response().asString();
         });
         step("Check that the message \"Unable to log in\" has been returned.", () ->
-            assertEquals("\"Unable to login\"", response[0])
+                assertEquals("\"Unable to login\"", response[0])
         );
     }
 
@@ -131,7 +131,7 @@ public class LoginTests {
                             .statusCode(400).extract().response().asString();
         });
         step("Check that the message \"Password is shorter than the minimum allowed length\" has been returned.", () ->
-            assertEquals("\"User validation failed: password: Path `password` (`42`) is shorter than the minimum allowed length (7).\"", response[0])
+                assertEquals("\"User validation failed: password: Path `password` (`42`) is shorter than the minimum allowed length (7).\"", response[0])
         );
     }
 }
