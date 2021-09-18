@@ -2,28 +2,22 @@ package com.herokuapp.todolist.mocks;
 
 public class LoginMocks {
     public String unregisteredUser() {
-        return "{\n" +
-                "    \"email\": \"unregistered@User.com\",\n" +
-                "    \"password\": \"0000\"\n" +
-                "}";
+        return "{\"email\":\"unregistered@User.com\"," +
+                "\"password\": \"0000\"}";
     }
 
     public String newUserWithShortPassword() {
-        return "{\n" +
-                "\t\"name\": \"Harry Potter\",\n" +
-                "\t\"email\": \"harry@potter.com\",\n" +
-                "\t\"password\": \"42\",\n" +
-                "\t\"age\": 14\n" +
-                "}";
+        return "{\"name\": \"Harry Potter\"," +
+                "\"email\": \"harry@potter.com\"," +
+                "\"password\": \"42\"," +
+                "\"age\": 14}";
     }
 
     public String testUser() {
-        return "{\n" +
-                "\t\"name\": \"Harry Potter\",\n" +
-                "\t\"email\": \"harry@potter.com\",\n" +
-                "\t\"password\": \"123581321\",\n" +
-                "\t\"age\": 14\n" +
-                "}";
+        return "{\"name\": \"Harry Potter\"," +
+                "\"email\": \"harry@potter.com\"," +
+                "\"password\": \"123581321\"," +
+                "\"age\": 14}";
     }
 
     public String testUserId() {

@@ -43,7 +43,10 @@ public class TaskTests {
             response[0] = Specs.taskRequestSpec
                     .given()
                     .headers("Authorization",
-                            loginResponse[0].extract().body().path("token").toString())
+                            loginResponse[0]
+                                    .extract()
+                                    .path("token")
+                                    .toString())
                     .contentType(JSON)
                     .body("{ \"description\": \"reading book\" }")
                     .when()
@@ -75,19 +78,28 @@ public class TaskTests {
             taskId[0] = Specs.taskRequestSpec
                     .given()
                     .headers("Authorization",
-                            loginResponse[0].extract().body().path("token").toString())
+                            loginResponse[0]
+                                    .extract()
+                                    .path("token")
+                                    .toString())
                     .contentType(JSON)
                     .body("{ \"description\": \"This task needs to be deleted\" }")
                     .when()
                     .post("")
                     .then()
-                    .statusCode(201).extract().body().path("data._id").toString();
+                    .statusCode(201)
+                    .extract()
+                    .path("data._id")
+                    .toString();
         });
         step("Send a DELETE request to delete the task with id:" + taskId[0], () -> {
             response[0] = Specs.taskRequestSpec
                     .given()
                     .headers("Authorization",
-                            loginResponse[0].extract().body().path("token").toString())
+                            loginResponse[0]
+                                    .extract()
+                                    .path("token")
+                                    .toString())
                     .when()
                     .delete("/" + taskId[0])
                     .then()

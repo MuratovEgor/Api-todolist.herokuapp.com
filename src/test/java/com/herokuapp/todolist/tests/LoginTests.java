@@ -41,7 +41,10 @@ public class LoginTests {
                             .when()
                             .post("/login")
                             .then()
-                            .statusCode(400).extract().response().asString();
+                            .statusCode(400)
+                            .extract()
+                            .response()
+                            .asString();
         });
         step("Check that the message \"Unable to log in\" has been returned.", () ->
                 assertEquals("\"Unable to login\"", response[0])
@@ -101,7 +104,10 @@ public class LoginTests {
                     .given()
                     .when()
                     .headers("Authorization",
-                            loginResponse[0].extract().body().path("token").toString())
+                            loginResponse[0]
+                                    .extract()
+                                    .path("token")
+                                    .toString())
                     .post("/logout")
                     .then()
                     .statusCode(200);
@@ -128,10 +134,14 @@ public class LoginTests {
                             .when()
                             .post("/register")
                             .then()
-                            .statusCode(400).extract().response().asString();
+                            .statusCode(400)
+                            .extract()
+                            .response()
+                            .asString();
         });
         step("Check that the message \"Password is shorter than the minimum allowed length\" has been returned.", () ->
-                assertEquals("\"User validation failed: password: Path `password` (`42`) is shorter than the minimum allowed length (7).\"", response[0])
+                assertEquals("\"User validation failed: password: Path `password` (`42`) " +
+                        "is shorter than the minimum allowed length (7).\"", response[0])
         );
     }
 }
