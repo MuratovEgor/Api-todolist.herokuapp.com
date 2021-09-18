@@ -10,7 +10,7 @@ ___
 
 | Jenkins  | Allure Report | Allure TestOps | Telegram |
 |:--------:|:-------------:|:---------:|:-------:|
-| <img src="images/Jenkins.svg" width="40" height="40"> | <img src="images/Selenoid.svg" width="40" height="40"> | <img src="images/Allure Report.svg" width="40" height="40"> | <img src="images/Allure TestOps.svg" width="40" height="40">
+| <img src="images/Jenkins.svg" width="40" height="40"> | <img src="images/Allure Report.svg" width="40" height="40"> | <img src="images/Allure TestOps.svg" width="40" height="40"> | <img src="images/Telegram.svg" width="40" height="40">
 
 ___
 

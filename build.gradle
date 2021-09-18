@@ -6,7 +6,6 @@ plugins {
 
 repositories {
     mavenCentral()
-    maven { url = "https://dl.bintray.com/qameta/maven-unstable/" }
 }
 
 def allureVersion = "2.14.0",
