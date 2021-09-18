@@ -17,8 +17,6 @@ ___
 ## Default settings used [for Jenkins startup](https://jenkins.autotests.cloud/job/c06-egormuratov-salo/) <a href="https://www.jenkins.io/"><img src="./images/Jenkins.svg" width="40" height="40"  alt="Jenkins"/></a>
 
 * REPOSITORY
-* REMOTE_DRIVER_URL (url address from selenoid or grid. default selenoid.autotests.cloud)
-* THREADS (number of threads to run. default 1)
 * ALLURE_NOTIFICATIONS_VERSION (default 3.0.2)
 
 ![alt "Launch via Jenkins"](./images/jenkinsRun.png)
@@ -32,7 +30,7 @@ gradle clean test
 ### Run tests with not filled local.properties:
 
 ```bash
-gradle clean test -DremoteDriverUrl=https://user1:1234@selenoid.autotests.cloud/wd/hub/ -Dthreads=1
+gradle clean test
 ```
 
 ### Serve allure report:
